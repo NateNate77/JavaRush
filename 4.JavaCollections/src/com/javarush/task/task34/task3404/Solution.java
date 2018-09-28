@@ -20,9 +20,7 @@ public class Solution {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        //solution.recursion("(-5+8)+(56-1.5*4)", 0); //expected output 0.5 6
-        String s = "sin(2*(-5+1.5*4)+28)";
-        s = "10-2^(2-1+1)";
+        String s = "10-2^(2-1+1)";
         System.out.print(s + " expected output 6 4 actually ");
         solution.recursion(s, 0);
         s = "2^10+2^(5+5)";
@@ -46,26 +44,8 @@ public class Solution {
         s = "(-1 + (-2))";
         System.out.print(s + " expected output -3 3 actually ");
         solution.recursion(s, 0);
-        s = "-sin(2*(-5+1.5*4)+28)";
-        System.out.print(s + " expected output -0.5 7 actually ");
-        solution.recursion(s, 0);
         s = "sin(100)-sin(100)";
         System.out.print(s + " expected output 0 3 actually ");
-        solution.recursion(s, 0);
-        s = "-(-22+22*2)";
-        System.out.print(s + " expected output -22 4 actually ");
-        solution.recursion(s, 0);
-        s = "-2^(-2)";
-        System.out.print(s + " expected output -0.25 3 actually ");
-        solution.recursion(s, 0);
-        s = "-(-2^(-2))+2+(-(-2^(-2)))";
-        System.out.print(s + " expected output 2.5 10 actually ");
-        solution.recursion(s, 0);
-        s = "(-2)*(-2)";
-        System.out.print(s + " expected output 4 3 actually ");
-        solution.recursion(s, 0);
-        s = "(-2)/(-2)";
-        System.out.print(s + " expected output 1 3 actually ");
         solution.recursion(s, 0);
         s = "sin(-30)";
         System.out.print(s + " expected output -0.5 2 actually ");
@@ -77,7 +57,7 @@ public class Solution {
         System.out.print(s + " expected output -0.58 2 actually ");
         solution.recursion(s, 0);
         s = "2+8*(9/4-1.5)^(1+1)";
-        System.out.print(s + " expected output 6.5 6 actually ");
+        System.out.print(s + " expected output 6.48 6 actually ");
         solution.recursion(s, 0);
         s = "0.005 ";
         System.out.print(s + " expected output 0.01 0 actually ");
@@ -177,9 +157,6 @@ public class Solution {
 
             default:
                 double num = Double.parseDouble(expr);
-                if(num<0){
- //                 count.count++;
-                }
                 return num;
 
         }
@@ -199,18 +176,8 @@ public class Solution {
             for (String el : result){
                 if(el.equals("")){
                     el="0";
-                   //count.count--;
                 }
-                double number;
-//                try {
-//                    number  = Double.parseDouble(el);
-//                    if (number<0){
-////                        count.count++;
-//                    }
-//                }
-//                catch (Exception e){
-                    number = recursionOperation(newA, el, count);
-                //}
+                double number = recursionOperation(newA, el, count);
                 numbers.add(number);
             }
             switch (a) {
@@ -231,17 +198,16 @@ public class Solution {
 
     }
 
-    public double multiplication(ArrayList<Double> array, Wrapper count){
+    public double multiplication(ArrayList<Double> array, Wrapper count) {
         count.count--;
         double result = 1;
-        for (int i = 0; i < array.size(); i++){
-        result *=array.get(i);
-        count.count++;
+        for (int i = 0; i < array.size(); i++) {
+            result *= array.get(i);
+            count.count++;
 
-     }
+        }
 
-
-        return  BigDecimal.valueOf(result)
+        return BigDecimal.valueOf(result)
                 .setScale(2, RoundingMode.HALF_UP)
                 .doubleValue();
 
@@ -337,4 +303,3 @@ public class Solution {
         //don't delete
     }
 }
-//"sin(2*(-5+1.5*4)+28)"
